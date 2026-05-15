@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Task Manager</title></head>
+<body>
+    <h1>Task Manager</h1>
+    <form method="post" action="/add/">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="New task...">
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+    {% for task in tasks %}
+        <li>{{ task.title }} - {{ task.created_at|date:"M d, Y" }}</li>
+    {% empty %}
+        <li>No tasks yet!</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
