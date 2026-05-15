@@ -11,3 +11,7 @@ def add_task(request):
         if title:
             Task.objects.create(title=title)
     return redirect("task_list")
+
+def delete_task(request, task_id):
+    Task.objects.filter(id=task_id).delete()
+    return redirect("task_list")
